@@ -1,7 +1,8 @@
 package com.cnb.internal.config;
 
 public class Constants {
-    public static String BASE_URL = "http://localhost:8080";
+    //public static String BASE_URL = "http://localhost:8080";
+    public static String BASE_URL = "https://schoolapp-2018.herokuapp.com/";
     public static String LOGIN_URL = "users/email/login";
     public static String ITEM_ATTRIBUTE_LIST = "item/attribute/list";
     public static String ITEM_TYPE_LIST = "item/types";
