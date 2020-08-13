@@ -1,0 +1,78 @@
+.cnb-bg{
+    background: #008577;
+    color:#fff;
+}
+.white-bg{
+    background :#fff;
+    opacity:90%;
+}
+.img-pos{
+    margin-top: 1em;
+    margin-bottom: 1em;
+    border-radius: 1em;
+}
+
+.cnb-btn{
+    background: #008577 !important;
+    color:#fff !important;
+    border-radius:0px !important;
+}
+
+.hidden{
+    display:none !important;
+}
+.card-header{
+    background: #008577 !important;
+    color : #fff;
+    font-weight : bold;
+    text-transform: uppercase;
+    border-radius:0px !important;
+}
+.card{
+    margin-bottom: 20px;
+    border-radius:0px !important;
+    box-shadow: 7px 8px 11px #888888;
+}
+.navbar{
+    border-bottom : 0.5px solid #008577;
+}
+.nav-link{
+    padding: 0.3rem 0.65rem !important;
+}
+.nav-pills .nav-link {
+    border-radius: 0px !important ;
+}
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    background-color: #008577 !important;
+    color:#fff !important;
+}
+a{
+    color:#808080 !important;
+}
+.pull-right{
+    float:right;
+}
+.card-footer{
+    background:#fff !important;
+}
+.round-span{
+    padding:1px 6px;
+    border-radius:30px;
+    border : 1px solid #808080;
+}
+input{
+    border-radius:0px !important;
+}
+
+.cnb-btn-h{
+    background: transparent !important;
+    color:#008577 !important;
+    border:1px solid #008577 !important;
+    border-radius:0px !important;
+    /*margin-top : 10px !important;*/
+}
+.cnb-btn-h:hover{
+    background: #008577 !important;
+    color:#fff !important;
+    border-radius:0px !important;
+}

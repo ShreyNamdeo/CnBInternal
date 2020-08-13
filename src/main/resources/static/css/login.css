@@ -1,0 +1,24 @@
+.cnb-bg{
+    background: #008577;
+    color:#fff;
+}
+.white-bg{
+    margin-top:2em;
+    background :#fff;
+    opacity:90%;
+    border-radius:5px;
+}
+.img-pos{
+    margin-top: 1em;
+    margin-bottom: 1em;
+    border-radius: 1em;
+}
+
+.cnb-btn{
+    background: #008577 !important;
+    color:#fff !important;
+}
+
+.hidden{
+    display:none !important;
+}

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="content-type" content="text/html" charset=UTF-8 />
+    <title>CNB</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/itemForm.css}"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+</head>
+<body class="white-bg">
+<nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand" href="/">
+        <img src="/images/Pencil_logo.svg" width="30" height="30" class="d-inline-block align-top" alt=""/>
+        Chalk And Boards
+    </a>
+    <div class="pull-right">
+        <a href="/logout">logout</a>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <h5>Select item attributes</h5>
+        </div>
+        <div class="col-6">
+            <label style="text-align:right;font-size:small" class="pull-right">Not found what you were looking for <br/> Add an attribute to include in selection</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="input-group mb-3">
+                <input style="border-radius:0px !important;" type="text" class="form-control" placeholder="Search for attribute">
+                <div class="input-group-append" style="border-radius:0px; !important">
+                    <span class="input-group-text" style="background:#008577; color:#fff;border:0px; border-radius:0px;"><i class="fa fa-search"></i></span>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <a href="/item/section/modify" class="btn cnb-btn pull-right">Add new item attribute <i class="fa fa-plus"></i></a>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <ul style="padding:0px">
+                <li class="itemAttributeListElement" th:each="itemAttribute : ${itemAttributesList}">
+                    <span th:id="${itemAttribute.id}" class="itemAttrVal" th:text="${itemAttribute.id}+' '" th:attr="onclick=|addAttributeToItem('${itemAttribute.id}')|" > &nbsp; </span><span><i class="fa fa-plus"></i></span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-8">
+            <h5>Attribute List</h5>
+        </div>
+        <div class="col-4">
+            <h5 class="text-center" style="position:relative;right:-60px;">Item Details</h5>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-8">
+            <form action="/item/media" method="post" id="submitItemAttributes" th:action="@{/item/media}" th:object="${itemAttributeList}">
+                <div id="itemAttributes" style="position:relative; left:15px;">
+                    <div class='form-group attributes' th:each="itemAttribute : ${itemAttributesValueList}" th:id="${itemAttribute.itemAttributeId}+'listItem'">
+                        <div class='row itemAttrRow'>
+                            <div class='col-3'>
+                                <label class='baseline-middle' th:text="${itemAttribute.itemAttributeId}"></label>
+                                <input class='key' type='hidden' th:value="${itemAttribute.itemAttributeId}">
+                            </div>
+                            <div class='col-8'>
+                                <input type='text' class='form-control value' placeholder='Enter value' th:value="${itemAttribute.value}">
+                            </div>
+                            <div class='col-1 delete-attr-entry' th:attr="onclick=|deleteSelection('${itemAttribute.itemAttributeId}listItem')|" >
+                                <i class='fa fa-minus-circle baseline-middle larger-font'></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a th:href="'/item?item='+${session.itemDto.id}" class="btn cnb-btn">Prev</a>
+                <button type="submit" class="btn cnb-btn pull-right">Next</button>
+            </form>
+        </div>
+        <div class="col-4">
+            <div class="row">
+                <div class="col-5"></div>
+                <div class="col-7 item-details">
+                    <div class="row">
+                        <div class="col-5 text-right">Name</div>
+                        <div class="col-7" th:text="${session.itemDto.name}"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-5 text-right">Price</div>
+                        <div class="col-7 " th:text="${session.itemDto.price}"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-5 text-right">Brand</div>
+                        <div class="col-7 " th:text="${session.itemDto.brand}"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-5 text-right">Type</div>
+                        <div class="col-7 " th:text="${session.itemDto.type.type}"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-5 text-right">Sub Type</div>
+                        <div class="col-7 " th:text="${session.itemDto.type.subType}"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-5 text-right">Description</div>
+                        <div class="col-7 " th:text="${session.itemDto.description}"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script th:src="@{/js/jquery-3.5.1.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/itemForm.js}"></script>
+</body>
+</html>

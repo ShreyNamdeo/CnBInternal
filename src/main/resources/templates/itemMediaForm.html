@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="content-type" content="text/html" charset=UTF-8 />
+    <title>CNB-Items</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/itemForm.css}"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+</head>
+<body class="white-bg">
+<nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand" href="/">
+        <img src="/images/Pencil_logo.svg" width="30" height="30" class="d-inline-block align-top" alt=""/>
+        Chalk And Boards
+    </a>
+    <div class="pull-right">
+        <a href="/logout">logout</a>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-8">
+            <form method="POST" enctype="multipart/form-data" action="/item/media/upload">
+                <label>Add Images</label>
+                <!--<input class="form-control" type="file" name="files" multiple>-->
+                <div class="input-group">
+                    <label class="input-group-btn">
+                        <span class="btn cnb-btn">
+                            Browse&hellip; <input type="file" name="files" style="display: none;" multiple>
+                        </span>
+                    </label>
+                    <input type="text" class="form-control" readonly>
+                    <button class="btn btn-sm cnb-btn upload-button" type="submit">Upload</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-4 align-items-center">
+            <h5 class="text-center" style="position:relative;right:-55px;top:2em;">Item Details</h5>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-8">
+            <div class="row">
+                <div class="col-3" th:each="image : ${images}">
+                    <div class="thumbnail">
+                        <img class="img-thumbnail" th:src="${image.readUrl}" alt="...">
+                        <div class="caption">
+                            <p>
+                                <a href="#" th:attr="onclick=|deleteMediaObject('${image.s3Key}',this)|" class="btn cnb-btn" role="button">Delete</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <a th:href="'/item?item='+${session.itemDto.id}" class="btn cnb-btn">Prev</a>
+                    <a href="/" class="btn cnb-btn pull-right">Done</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="row">
+                <div class="col-5"></div>
+                <div class="col-7 item-details">
+                    <div class="row">
+                        <div class="col-5 text-right">Name</div>
+                        <div class="col-7" th:text="${session.itemDto.name}"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-5 text-right">Price</div>
+                        <div class="col-7 " th:text="${session.itemDto.price}"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-5 text-right">Brand</div>
+                        <div class="col-7 " th:text="${session.itemDto.brand}"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-5 text-right">Type</div>
+                        <div class="col-7 " th:text="${session.itemDto.type.type}"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-5 text-right">Sub Type</div>
+                        <div class="col-7 " th:text="${session.itemDto.type.subType}"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-5 text-right">Description</div>
+                        <div class="col-7 " th:text="${session.itemDto.description}"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-5 text-right">Attributes</div>
+                        <div class="col-7"><i class="fa fa-ellipsis-h"></i></div>
+                    </div>
+                    <div class="row" th:each="attribute: ${session.itemDto.itemAttributes}" style="font-size:smaller;">
+                        <div class="col-2"> > </div>
+                        <div class="col-4" th:text="${attribute.itemAttributeId}"></div>
+                        <div class="col-6" th:text="${attribute.value}"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script th:src="@{/js/jquery-3.5.1.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/itemForm.js}"></script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+.itemAttributeListElement{
+    list-style: none;
+    padding: 6px 15px;
+    border: 2px solid #008577;
+    border-radius: 30px;
+    margin-top: 5px;
+    display: inline-block;
+    font-weight: 500;
+    color: #008577;
+    transition-duration: 0.5s;
+}
+.itemAttributeListElement:hover{
+    background:#008577;
+    color:#fff;
+}
+.itemAttributeListElement.active{
+    background:#008577;
+    color:#fff;
+}
+.itemAttrRow{
+    padding: 10px 0px;
+    border: 1px solid #008577;
+    border-radius: 5px;
+    color: #008577;
+    vertical-align: bottom;
+    margin-right: 15px;
+}
+.baseline-middle{
+    vertical-align: -webkit-baseline-middle;
+}
+.larger-font{
+    font-size:larger;
+}
+.upload-button{
+    float: right;
+    height: 39px;
+}
+.caption{
+    margin-top:10px;
+}
+.img-thumbnail{
+    min-height: 180px;
+}
+.type-item{
+    border: 2px solid #008577;
+    border-radius : 5px;
+    margin: 0px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+}
+.type-item-ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin-bottom:5px;
+    padding-left: 15px;
+}
+.type-item-li{
+    display:inline-block;
+    font-size : smaller;
+    color: #808080;
+    margin-right:5px;
+}
+.item-type-main{
+    color: #808080;
+    font-weight: 500;
+    padding-left: 30px;
+}
+.ul-container{
+    max-height: 840PX;
+    overflow-y: scroll;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #fff;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #008577;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #008577;
+}
+.item-details{
+    color: #008577;
+    font-size: 15px;
+    opacity: 0.8;
+}
